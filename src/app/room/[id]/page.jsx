@@ -12,87 +12,54 @@ import {
 } from 'lucide-react';
 import Button from '@/app/components/Button';
 import StarRating from '@/app/components/StarRating';
-import { mockRooms } from '@/app/data/mockData';
+import { mockRooms, mockReviews, mockAdditionalImages } from '@/app/data/mockData';
 
 export default function RoomDetailPage({ params }) {
   const router = useRouter();
   const [room, setRoom] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDates, setSelectedDates] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const [showAllImages, setShowAllImages] = useState(false);
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   
   const resolvedParams = use(params);
 
-  // ข้อมูลปฏิทินจำลอง (30 วันข้างหน้า)
-  const [availabilityCalendar, setAvailabilityCalendar] = useState([]);
-  
-  // ข้อมูลรูปภาพเพิ่มเติม
-  const additionalImages = [
-    'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800',
-    'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800',
-    'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800',
-    'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800',
-    'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800',
-    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800'
-  ];
-
-  // ข้อมูลรีวิวจำลอง
-  const mockReviews = [
-    {
-      id: 1,
-      name: 'คุณสมศรี',
-      rating: 5,
-      date: '2024-12-15',
-      comment: 'ห้องพักสวยมาก วิวดีมาก เจ้าของใจดี แนะนำเลยค่ะ!',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b002?w=150'
-    },
-    {
-      id: 2,
-      name: 'คุณวิทยา',
-      rating: 4,
-      date: '2024-12-10',
-      comment: 'สะอาด สะดวกสบาย ราคาเหมาะสม จะกลับมาอีกครับ',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150'
-    },
-    {
-      id: 3,
-      name: 'คุณณัฐพร',
-      rating: 5,
-      date: '2024-12-05',
-      comment: 'บรรยากาศดีมาก เหมาะสำหรับพักผ่อน สระน้ำสะอาด',
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150'
-    }
-  ];
-
-  // สร้างข้อมูลปฏิทิน 30 วันข้างหน้า
-  useEffect(() => {
+  // สร้างข้อมูลปฏิทิน 2 เดือนข้างหน้า
+  const generateAvailabilityCalendar = () => {
     const calendar = [];
     const today = new Date();
+    const twoMonthsLater = new Date();
+    twoMonthsLater.setMonth(today.getMonth() + 2);
     
-    for (let i = 0; i < 30; i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() + i);
-      
+    let currentDate = new Date(today);
+    
+    while (currentDate <= twoMonthsLater) {
       // สุ่มสถานะว่าง/ไม่ว่าง (70% ว่าง)
       const isAvailable = Math.random() > 0.3;
       
       // ราคาแปรปรวนตามวัน (วันหยุดแพงขึ้น)
-      const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+      const isWeekend = currentDate.getDay() === 0 || currentDate.getDay() === 6;
       const basePrice = room?.price || 3000;
       const price = isWeekend ? basePrice * 1.2 : basePrice;
       
       calendar.push({
-        date: date,
+        date: new Date(currentDate),
         isAvailable: isAvailable,
         price: Math.round(price),
         isWeekend: isWeekend
       });
+      
+      // เพิ่มวันถัดไป
+      currentDate.setDate(currentDate.getDate() + 1);
     }
     
-    setAvailabilityCalendar(calendar);
-  }, [room]);
+    return calendar;
+  };
+
+  const [availabilityCalendar, setAvailabilityCalendar] = useState(generateAvailabilityCalendar());
 
   // โหลดข้อมูลห้องพัก
   useEffect(() => {
@@ -116,12 +83,21 @@ export default function RoomDetailPage({ params }) {
     }
   }, [resolvedParams.id]);
 
+  // อัปเดตปฏิทินเมื่อข้อมูลห้องพักเปลี่ยน
+  useEffect(() => {
+    if (room) {
+      setAvailabilityCalendar(generateAvailabilityCalendar());
+    }
+  }, [room]);
+
   // ฟังก์ชันติดต่อผ่าน LINE
   const handleLineContact = () => {
     if (!room) return;
     
-    const dateText = selectedDate 
-      ? `📅 วันที่สนใจ: ${selectedDate.toLocaleDateString('th-TH')}\n`
+    const datesText = selectedDates.length > 0 
+      ? `📅 วันที่สนใจ: ${selectedDates.map(date => 
+          date.toLocaleDateString('th-TH')
+        ).join(', ')}\n`
       : '';
     
     const message = encodeURIComponent(
@@ -131,7 +107,7 @@ export default function RoomDetailPage({ params }) {
         `🚿 ห้องน้ำ: ${room.bathrooms} ห้อง\n` +
         `👥 รองรับ: ${room.maxGuests} คน\n` +
         `📍 สถานที่: ${room.location}\n` +
-        dateText +
+        datesText +
         `กรุณาแจ้งรายละเอียดเพิ่มเติมและตรวจสอบว่างครับ/ค่ะ 🙏`
     );
 
@@ -164,9 +140,76 @@ export default function RoomDetailPage({ params }) {
 
   // ฟังก์ชันเลือกวันที่
   const handleDateSelect = (dateObj) => {
-    if (dateObj.isAvailable) {
-      setSelectedDate(dateObj.date);
+    if (!dateObj.isAvailable) return;
+
+    const dateStr = dateObj.date.toDateString();
+    
+    setSelectedDates(prev => {
+      // ถ้าวันที่ถูกเลือกอยู่แล้ว ให้ลบออก
+      if (prev.some(d => d.toDateString() === dateStr)) {
+        return prev.filter(d => d.toDateString() !== dateStr);
+      }
+      // ไม่เช่นนั้นให้เพิ่มเข้าไป
+      return [...prev, new Date(dateObj.date)];
+    });
+  };
+
+  // ฟังก์ชันเปลี่ยนเดือน
+  const changeMonth = (increment) => {
+    setCurrentMonth(prev => {
+      let newMonth = prev + increment;
+      let newYear = currentYear;
+      
+      if (newMonth > 11) {
+        newMonth = 0;
+        newYear++;
+      } else if (newMonth < 0) {
+        newMonth = 11;
+        newYear--;
+      }
+      
+      setCurrentYear(newYear);
+      return newMonth;
+    });
+  };
+
+  // สร้างปฏิทินสำหรับเดือนที่แสดง
+  const getDaysInMonth = (year, month) => {
+    return new Date(year, month + 1, 0).getDate();
+  };
+
+  const getFirstDayOfMonth = (year, month) => {
+    return new Date(year, month, 1).getDay();
+  };
+
+  const renderCalendar = () => {
+    const daysInMonth = getDaysInMonth(currentYear, currentMonth);
+    const firstDayOfMonth = getFirstDayOfMonth(currentYear, currentMonth);
+    
+    // สร้าง array สำหรับวันในเดือน
+    const days = [];
+    
+    // เพิ่มวันว่างสำหรับวันแรกของเดือน
+    for (let i = 0; i < firstDayOfMonth; i++) {
+      days.push(null);
     }
+    
+    // เพิ่มวันในเดือน
+    for (let i = 1; i <= daysInMonth; i++) {
+      const date = new Date(currentYear, currentMonth, i);
+      const dateObj = availabilityCalendar.find(d => 
+        d.date.toDateString() === date.toDateString()
+      );
+      
+      days.push(dateObj || {
+        date,
+        isAvailable: false,
+        price: 0,
+        isWeekend: date.getDay() === 0 || date.getDay() === 6
+      });
+    }
+    
+    return days;
   };
 
   // แสดง Loading
@@ -265,7 +308,7 @@ export default function RoomDetailPage({ params }) {
             
             {/* รูปภาพเพิ่มเติม */}
             <div className="grid grid-cols-4 gap-2">
-              {additionalImages.slice(0, 4).map((image, index) => (
+              {mockAdditionalImages.slice(0, 4).map((image, index) => (
                 <div key={index} className="aspect-square rounded-lg overflow-hidden">
                   <img 
                     src={image} 
@@ -332,16 +375,20 @@ export default function RoomDetailPage({ params }) {
               </div>
 
               {/* วันที่เลือก */}
-              {selectedDate && (
+              {selectedDates.length > 0 && (
                 <div className="mb-4 p-3 bg-white rounded-lg border border-blue-200">
                   <div className="text-sm text-gray-600">วันที่เลือก:</div>
                   <div className="font-semibold text-blue-600">
-                    {selectedDate.toLocaleDateString('th-TH', {
-                      weekday: 'long',
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
+                    {selectedDates.map(date => (
+                      <div key={date.toISOString()}>
+                        {date.toLocaleDateString('th-TH', {
+                          weekday: 'long',
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -350,7 +397,7 @@ export default function RoomDetailPage({ params }) {
               <div className="space-y-3">
                 <Button 
                   onClick={handleLineContact}
-                  disabled={!room.isAvailable}
+                  disabled={!room.isAvailable || selectedDates.length === 0}
                   className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-300 text-white"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
@@ -392,35 +439,82 @@ export default function RoomDetailPage({ params }) {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
           <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center">
             <Calendar className="w-6 h-6 mr-3 text-blue-500" />
-            ปฏิทินการจอง
+            ปฏิทินการจอง (สามารถเลือกได้หลายวัน)
           </h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-2 md:gap-3">
-            {availabilityCalendar.map((dateObj, index) => {
-              const isSelected = selectedDate && 
-                selectedDate.toDateString() === dateObj.date.toDateString();
+          {/* ปุ่มเปลี่ยนเดือน */}
+          <div className="flex justify-between items-center mb-6">
+            <Button 
+              onClick={() => changeMonth(-1)}
+              disabled={currentMonth <= new Date().getMonth() && currentYear <= new Date().getFullYear()}
+              variant="outline"
+              className="p-2"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Button>
+            
+            <div className="text-lg font-semibold">
+              {new Date(currentYear, currentMonth).toLocaleDateString('th-TH', {
+                month: 'long',
+                year: 'numeric'
+              })}
+            </div>
+            
+            <Button 
+              onClick={() => changeMonth(1)}
+              disabled={currentMonth >= new Date().getMonth() + 1}
+              variant="outline"
+              className="p-2"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Button>
+          </div>
+          
+          {/* ปฏิทิน */}
+          <div className="grid grid-cols-7 gap-2 mb-4">
+            {/* หัววันในสัปดาห์ */}
+            {['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'].map((day) => (
+              <div key={day} className="text-center font-medium text-gray-500 text-sm">
+                {day}
+              </div>
+            ))}
+          </div>
+          
+          <div className="grid grid-cols-7 gap-2">
+            {renderCalendar().map((dateObj, index) => {
+              if (!dateObj) {
+                return <div key={`empty-${index}`} className="h-10"></div>;
+              }
+              
+              const isSelected = selectedDates.some(d => 
+                d.toDateString() === dateObj.date.toDateString()
+              );
+              const isToday = dateObj.date.toDateString() === new Date().toDateString();
               
               return (
                 <button
-                  key={index}
+                  key={dateObj.date.toISOString()}
                   onClick={() => handleDateSelect(dateObj)}
                   disabled={!dateObj.isAvailable}
                   className={`
-                    p-2 md:p-3 rounded-lg text-center transition-all
+                    h-10 md:h-12 rounded-lg text-center transition-all flex flex-col items-center justify-center
                     ${dateObj.isAvailable 
                       ? 'hover:bg-blue-50 border-2 border-transparent hover:border-blue-200' 
                       : 'opacity-50 cursor-not-allowed bg-gray-100'
                     }
                     ${isSelected ? 'bg-blue-500 text-white' : 'bg-white border border-gray-200'}
                     ${dateObj.isWeekend && dateObj.isAvailable ? 'bg-yellow-50' : ''}
+                    ${isToday ? 'border-blue-300' : ''}
                   `}
                 >
                   <div className={`text-xs md:text-sm font-medium ${isSelected ? 'text-white' : 'text-gray-900'}`}>
-                    {dateObj.date.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })}
+                    {dateObj.date.getDate()}
                   </div>
-                  <div className={`text-xs ${isSelected ? 'text-blue-100' : dateObj.isAvailable ? 'text-green-600' : 'text-gray-400'}`}>
-                    {dateObj.isAvailable ? `฿${dateObj.price.toLocaleString()}` : 'ไม่ว่าง'}
-                  </div>
+                  {dateObj.isAvailable && (
+                    <div className={`text-[10px] ${isSelected ? 'text-blue-100' : 'text-green-600'}`}>
+                      ฿{dateObj.price.toLocaleString()}
+                    </div>
+                  )}
                 </button>
               );
             })}
@@ -443,6 +537,10 @@ export default function RoomDetailPage({ params }) {
             <div className="flex items-center">
               <div className="w-4 h-4 bg-blue-500 rounded mr-2"></div>
               <span className="text-gray-600">วันที่เลือก</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-white border border-blue-300 rounded mr-2"></div>
+              <span className="text-gray-600">วันนี้</span>
             </div>
           </div>
         </div>
@@ -561,8 +659,6 @@ export default function RoomDetailPage({ params }) {
                   <span>ห้องน้ำ:</span>
                   <span className="font-medium">{room.bathrooms} ห้อง</span>
                 </div>
-
-
                 <div className="flex justify-between">
                   <span>รองรับผู้เข้าพัก:</span>
                   <span className="font-medium">{room.maxGuests} คน</span>
@@ -670,7 +766,7 @@ export default function RoomDetailPage({ params }) {
                     className="w-full aspect-video object-cover rounded-lg"
                   />
                 </div>
-                {additionalImages.map((image, index) => (
+                {mockAdditionalImages.map((image, index) => (
                   <div key={index} className="aspect-square">
                     <img 
                       src={image} 
@@ -698,7 +794,7 @@ export default function RoomDetailPage({ params }) {
           </Button>
           <Button 
             onClick={handleLineContact}
-            disabled={!room.isAvailable}
+            disabled={!room.isAvailable || selectedDates.length === 0}
             className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-300 text-white"
           >
             <MessageCircle className="w-4 h-4 mr-2" />

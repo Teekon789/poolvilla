@@ -1,411 +1,376 @@
-// mockData.js
+// ข้อมูลห้องพักจำลอง
 export const mockRooms = [
   {
     id: 1,
-    name: 'Luxury Ocean View Pool Villa',
-    location: 'หัวหิน, ประจวบคีรีขันธ์',
+    name: "Luxury Pool Villa Sunset View",
+    location: "เขาตะเกียบ, หัวหิน, ประจวบคีรีขันธ์",
+    price: 4500,
+    originalPrice: 5500,
+    mainImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
     bedrooms: 3,
     bathrooms: 2,
-    maxGuests: 6,
-    price: 4500,
+    maxGuests: 8,
+    area: 120,
     averageRating: 4.8,
-    totalReviews: 124,
-    mainImage: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    totalReviews: 42,
     isFeature: true,
     isAvailable: true,
     amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'สระว่ายน้ำส่วนตัว', icon: 'pool' },
-      { name: 'แอร์', icon: 'air-conditioning' },
-      { name: 'วิวทะเล', icon: 'ocean-view' }
+      { name: "WiFi ฟรี", icon: "wifi" },
+      { name: "ที่จอดรถฟรี", icon: "parking" },
+      { name: "ครัวพร้อมอุปกรณ์", icon: "kitchen" },
+      { name: "สระว่ายน้ำส่วนตัว", icon: "pool" },
+      { name: "เครื่องปรับอากาศ", icon: "air-conditioning" },
+      { name: "วิวทะเล", icon: "ocean-view" },
+      { name: "ระเบียงส่วนตัว", icon: "balcony" },
+      { name: "บาร์บีคิว", icon: "bbq" },
+      { name: "ทีวี Smart TV", icon: "tv" },
+      { name: "เครื่องซักผ้า", icon: "laundry" }
     ]
   },
   {
     id: 2,
-    name: 'Modern Garden Pool Villa',
-    location: 'ปราณบุรี, ประจวบคีรีขันธ์',
+    name: "Modern Pool Villa Mountain View",
+    location: "เขายาย, ปากช่อง, นครราชสีมา",
+    price: 3800,
+    originalPrice: 4200,
+    mainImage: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop",
     bedrooms: 2,
-    bathrooms: 1,
-    maxGuests: 4,
-    price: 3200,
+    bathrooms: 2,
+    maxGuests: 6,
+    area: 85,
     averageRating: 4.6,
-    totalReviews: 89,
-    mainImage: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    totalReviews: 28,
     isFeature: false,
     isAvailable: true,
     amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'สระว่ายน้ำ', icon: 'pool' },
-      { name: 'สวนส่วนตัว', icon: 'garden' }
+      { name: "WiFi ฟรี", icon: "wifi" },
+      { name: "ที่จอดรถฟรี", icon: "parking" },
+      { name: "ครัวพร้อมอุปกรณ์", icon: "kitchen" },
+      { name: "สระว่ายน้ำ", icon: "pool" },
+      { name: "เครื่องปรับอากาศ", icon: "air-conditioning" },
+      { name: "วิวภูเขา", icon: "mountain-view" },
+      { name: "สวนส่วนตัว", icon: "garden" },
+      { name: "ห้องออกกำลังกาย", icon: "gym" },
+      { name: "เกมส์คอนโซล", icon: "game" }
     ]
   },
   {
     id: 3,
-    name: 'Beachfront Paradise Villa',
-    location: 'เกาะสมุย, สุราษฎร์ธานี',
+    name: "Cozy Family Pool Villa",
+    location: "บางแสน, ชลบุรี",
+    price: 2800,
+    originalPrice: 3200,
+    mainImage: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
     bedrooms: 4,
     bathrooms: 3,
-    maxGuests: 8,
-    price: 6800,
-    averageRating: 4.9,
-    totalReviews: 201,
-    mainImage: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    maxGuests: 10,
+    area: 150,
+    averageRating: 4.4,
+    totalReviews: 35,
     isFeature: true,
-    isAvailable: true,
+    isAvailable: false,
     amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'สระว่ายน้ำอินฟินิตี้', icon: 'pool' },
-      { name: 'หาดส่วนตัว', icon: 'beach' },
-      { name: 'บาร์บีคิว', icon: 'bbq' },
-      { name: 'แอร์', icon: 'air-conditioning' }
+      { name: "WiFi ฟรี", icon: "wifi" },
+      { name: "ที่จอดรถฟรี", icon: "parking" },
+      { name: "ครัวใหญ่", icon: "kitchen" },
+      { name: "สระว่ายน้ำเด็ก", icon: "pool" },
+      { name: "เครื่องปรับอากาศ", icon: "air-conditioning" },
+      { name: "อุปกรณ์เด็ก", icon: "baby" },
+      { name: "บาร์บีคิว", icon: "bbq" },
+      { name: "ทีวี", icon: "tv" },
+      { name: "เครื่องซักผ้า", icon: "laundry" },
+      { name: "ระเบียงกว้าง", icon: "balcony" }
     ]
   },
   {
     id: 4,
-    name: 'Mountain View Eco Villa',
-    location: 'เขาใหญ่, นครราชสีมา',
-    bedrooms: 2,
-    bathrooms: 2,
-    maxGuests: 4,
-    price: 2800,
-    averageRating: 4.5,
+    name: "Tropical Paradise Villa",
+    location: "เกาะสมุย, สุราษฎร์ธานี",
+    price: 6200,
+    originalPrice: 7000,
+    mainImage: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop",
+    bedrooms: 3,
+    bathrooms: 3,
+    maxGuests: 8,
+    area: 180,
+    averageRating: 4.9,
     totalReviews: 67,
-    mainImage: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: false,
+    isFeature: true,
     isAvailable: true,
     amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'วิวภูเขา', icon: 'mountain-view' },
-      { name: 'ระเบียงส่วนตัว', icon: 'balcony' },
-      { name: 'สวนส่วนตัว', icon: 'garden' }
+      { name: "WiFi ฟรี", icon: "wifi" },
+      { name: "ที่จอดรถฟรี", icon: "parking" },
+      { name: "ครัวพรีเมียม", icon: "kitchen" },
+      { name: "สระว่ายน้ำใหญ่", icon: "pool" },
+      { name: "เครื่องปรับอากาศ", icon: "air-conditioning" },
+      { name: "วิวทะเลส่วนตัว", icon: "ocean-view" },
+      { name: "สวนเขตร้อน", icon: "garden" },
+      { name: "บาร์บีคิว", icon: "bbq" },
+      { name: "ห้องออกกำลังกาย", icon: "gym" },
+      { name: "จาคูซซี่", icon: "pool" }
     ]
   },
   {
     id: 5,
-    name: 'Tropical Sunset Villa',
-    location: 'ภูเก็ต, ภูเก็ต',
-    bedrooms: 3,
-    bathrooms: 2,
-    maxGuests: 6,
-    price: 5200,
-    averageRating: 4.7,
-    totalReviews: 156,
-    mainImage: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: true,
+    name: "Minimalist Pool Villa",
+    location: "เขาใหญ่, นครราชสีมา",
+    price: 3200,
+    originalPrice: 3600,
+    mainImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+    bedrooms: 2,
+    bathrooms: 1,
+    maxGuests: 4,
+    area: 65,
+    averageRating: 4.3,
+    totalReviews: 19,
+    isFeature: false,
     isAvailable: true,
     amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'สระว่ายน้ำ', icon: 'pool' },
-      { name: 'ใกล้ชายหาด', icon: 'beach' },
-      { name: 'แอร์', icon: 'air-conditioning' },
-      { name: 'ระเบียงวิวพระอาทิตย์ตก', icon: 'sunset-view' }
+      { name: "WiFi ฟรี", icon: "wifi" },
+      { name: "ที่จอดรถ", icon: "parking" },
+      { name: "ครัวเล็ก", icon: "kitchen" },
+      { name: "สระว่ายน้ำ", icon: "pool" },
+      { name: "เครื่องปรับอากาศ", icon: "air-conditioning" },
+      { name: "วิวป่า", icon: "mountain-view" },
+      { name: "ระเบียง", icon: "balcony" },
+      { name: "ทีวี", icon: "tv" }
     ]
   },
   {
     id: 6,
-    name: 'Cozy Family Villa',
-    location: 'ชะอำ, เพชรบุรี',
-    bedrooms: 3,
-    bathrooms: 2,
-    maxGuests: 6,
-    price: 3800,
-    averageRating: 4.4,
-    totalReviews: 92,
-    mainImage: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: false,
-    isAvailable: true,
-    amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'สระว่ายน้ำ', icon: 'pool' },
-      { name: 'เหมาะสำหรับครอบครัว', icon: 'family-friendly' },
-      { name: 'แอร์', icon: 'air-conditioning' }
-    ]
-  },
-  {
-    id: 7,
-    name: 'Minimalist Design Villa',
-    location: 'กรุงเทพฯ, กรุงเทพมหานคร',
-    bedrooms: 2,
-    bathrooms: 1,
-    maxGuests: 4,
-    price: 2500,
-    averageRating: 4.3,
-    totalReviews: 78,
-    mainImage: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: false,
-    isAvailable: true,
-    amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'ใกล้รถไฟฟ้า', icon: 'metro' },
-      { name: 'แอร์', icon: 'air-conditioning' },
-      { name: 'ดีไซน์โมเดิร์น', icon: 'modern-design' }
-    ]
-  },
-  {
-    id: 8,
-    name: 'Riverside Retreat Villa',
-    location: 'กาญจนบุรี, กาญจนบุรี',
-    bedrooms: 4,
-    bathrooms: 3,
-    maxGuests: 8,
-    price: 4200,
-    averageRating: 4.6,
-    totalReviews: 134,
-    mainImage: 'https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: false,
-    isAvailable: true,
-    amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'ริมแม่น้ำ', icon: 'river-view' },
-      { name: 'บาร์บีคิว', icon: 'bbq' },
-      { name: 'สวนส่วนตัว', icon: 'garden' },
-      { name: 'ตกปลา', icon: 'fishing' }
-    ]
-  },
-  {
-    id: 9,
-    name: 'Luxury Penthouse Villa',
-    location: 'พัทยา, ชลบุรี',
+    name: "Grand Estate Pool Villa",
+    location: "พัทยา, ชลบุรี",
+    price: 8500,
+    originalPrice: 9500,
+    mainImage: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop",
     bedrooms: 5,
     bathrooms: 4,
-    maxGuests: 10,
-    price: 8500,
-    averageRating: 4.9,
-    totalReviews: 87,
-    mainImage: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: true,
-    isAvailable: true,
-    amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'สระว่ายน้ำรูฟท็อป', icon: 'rooftop-pool' },
-      { name: 'วิวทะเล', icon: 'ocean-view' },
-      { name: 'แอร์', icon: 'air-conditioning' },
-      { name: 'ลิฟต์ส่วนตัว', icon: 'private-elevator' },
-      { name: 'บาร์บีคิว', icon: 'bbq' }
-    ]
-  },
-  {
-    id: 10,
-    name: 'Traditional Thai Villa',
-    location: 'เชียงใหม่, เชียงใหม่',
-    bedrooms: 3,
-    bathrooms: 2,
-    maxGuests: 6,
-    price: 3500,
-    averageRating: 4.5,
-    totalReviews: 112,
-    mainImage: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: false,
-    isAvailable: true,
-    amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'สถาปัตยกรรมไทย', icon: 'thai-architecture' },
-      { name: 'สวนส่วนตัว', icon: 'garden' },
-      { name: 'ระเบียงส่วนตัว', icon: 'balcony' },
-      { name: 'แอร์', icon: 'air-conditioning' }
-    ]
-  },
-  {
-    id: 11,
-    name: 'Boutique City Villa',
-    location: 'สีลม, กรุงเทพมหานคร',
-    bedrooms: 1,
-    bathrooms: 1,
-    maxGuests: 2,
-    price: 2200,
-    averageRating: 4.2,
-    totalReviews: 56,
-    mainImage: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: false,
-    isAvailable: true,
-    amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวเล็ก', icon: 'kitchenette' },
-      { name: 'ใกล้ BTS', icon: 'bts' },
-      { name: 'แอร์', icon: 'air-conditioning' },
-      { name: 'เหมาะสำหรับคู่รัก', icon: 'couple-friendly' }
-    ]
-  },
-  {
-    id: 12,
-    name: 'Floating Villa Resort',
-    location: 'เขื่อนศรีนครินทร์, กาญจนบุรี',
-    bedrooms: 2,
-    bathrooms: 1,
-    maxGuests: 4,
-    price: 4800,
-    averageRating: 4.8,
-    totalReviews: 73,
-    mainImage: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: true,
-    isAvailable: true,
-    amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'บ้านลอยน้ำ', icon: 'floating-house' },
-      { name: 'กิจกรรมทางน้ำ', icon: 'water-activities' },
-      { name: 'ตกปลา', icon: 'fishing' },
-      { name: 'แอร์', icon: 'air-conditioning' }
-    ]
-  },
-  {
-    id: 13,
-    name: 'Hillside Panoramic Villa',
-    location: 'ดอยสุเทพ, เชียงใหม่',
-    bedrooms: 3,
-    bathrooms: 2,
-    maxGuests: 6,
-    price: 4000,
+    maxGuests: 12,
+    area: 250,
     averageRating: 4.7,
-    totalReviews: 95,
-    mainImage: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: false,
+    totalReviews: 89,
+    isFeature: true,
     isAvailable: true,
     amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'วิวพาโนรามา', icon: 'panoramic-view' },
-      { name: 'สระว่ายน้ำ', icon: 'pool' },
-      { name: 'บาร์บีคิว', icon: 'bbq' },
-      { name: 'ระเบียงส่วนตัว', icon: 'balcony' }
-    ]
-  },
-  {
-    id: 14,
-    name: 'Budget Friendly Villa',
-    location: 'ระยอง, ระยอง',
-    bedrooms: 2,
-    bathrooms: 1,
-    maxGuests: 4,
-    price: 1800,
-    averageRating: 4.1,
-    totalReviews: 43,
-    mainImage: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: false,
-    isAvailable: true,
-    amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวเล็ก', icon: 'kitchenette' },
-      { name: 'ราคาประหยัด', icon: 'budget-friendly' },
-      { name: 'แอร์', icon: 'air-conditioning' }
-    ]
-  },
-  {
-    id: 15,
-    name: 'Executive Business Villa',
-    location: 'อโศก, กรุงเทพมหานคร',
-    bedrooms: 3,
-    bathrooms: 2,
-    maxGuests: 6,
-    price: 5500,
-    averageRating: 4.6,
-    totalReviews: 108,
-    mainImage: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    isFeature: false,
-    isAvailable: true,
-    amenities: [
-      { name: 'WiFi ฟรี', icon: 'wifi' },
-      { name: 'ที่จอดรถ', icon: 'parking' },
-      { name: 'ครัวครบครัน', icon: 'kitchen' },
-      { name: 'ใกล้ MRT', icon: 'mrt' },
-      { name: 'ออฟฟิศในบ้าน', icon: 'home-office' },
-      { name: 'แอร์', icon: 'air-conditioning' },
-      { name: 'เหมาะสำหรับธุรกิจ', icon: 'business-friendly' }
+      { name: "WiFi ฟรี", icon: "wifi" },
+      { name: "ที่จอดรถใหญ่", icon: "parking" },
+      { name: "ครัวสมบูรณ์", icon: "kitchen" },
+      { name: "สระว่ายน้ำยักษ์", icon: "pool" },
+      { name: "เครื่องปรับอากาศ", icon: "air-conditioning" },
+      { name: "วิวทะเล 360°", icon: "ocean-view" },
+      { name: "สวนขนาดใหญ่", icon: "garden" },
+      { name: "บาร์บีคิวพรีเมียม", icon: "bbq" },
+      { name: "ห้องออกกำลังกาย", icon: "gym" },
+      { name: "ห้องเกมส์", icon: "game" },
+      { name: "เครื่องซักผ้า 2 เครื่อง", icon: "laundry" },
+      { name: "โฮมเธียเตอร์", icon: "tv" }
     ]
   }
 ];
 
-export const mockAmenities = [
-  { id: 1, name: 'WiFi ฟรี', icon: 'wifi' },
-  { id: 2, name: 'ที่จอดรถ', icon: 'parking' },
-  { id: 3, name: 'ครัวครบครัน', icon: 'kitchen' },
-  { id: 4, name: 'ครัวเล็ก', icon: 'kitchenette' },
-  { id: 5, name: 'สระว่ายน้ำ', icon: 'pool' },
-  { id: 6, name: 'สระว่ายน้ำส่วนตัว', icon: 'pool' },
-  { id: 7, name: 'สระว่ายน้ำอินฟินิตี้', icon: 'pool' },
-  { id: 8, name: 'สระว่ายน้ำรูฟท็อป', icon: 'rooftop-pool' },
-  { id: 9, name: 'แอร์', icon: 'air-conditioning' },
-  { id: 10, name: 'วิวทะเล', icon: 'ocean-view' },
-  { id: 11, name: 'วิวภูเขา', icon: 'mountain-view' },
-  { id: 12, name: 'วิวพาโนรามา', icon: 'panoramic-view' },
-  { id: 13, name: 'ริมแม่น้ำ', icon: 'river-view' },
-  { id: 14, name: 'หาดส่วนตัว', icon: 'beach' },
-  { id: 15, name: 'ใกล้ชายหาด', icon: 'beach' },
-  { id: 16, name: 'สวนส่วนตัว', icon: 'garden' },
-  { id: 17, name: 'ระเบียงส่วนตัว', icon: 'balcony' },
-  { id: 18, name: 'ระเบียงวิวพระอาทิตย์ตก', icon: 'sunset-view' },
-  { id: 19, name: 'บาร์บีคิว', icon: 'bbq' },
-  { id: 20, name: 'ตกปลา', icon: 'fishing' },
-  { id: 21, name: 'กิจกรรมทางน้ำ', icon: 'water-activities' },
-  { id: 22, name: 'ใกล้รถไฟฟ้า', icon: 'metro' },
-  { id: 23, name: 'ใกล้ BTS', icon: 'bts' },
-  { id: 24, name: 'ใกล้ MRT', icon: 'mrt' },
-  { id: 25, name: 'เหมาะสำหรับครอบครัว', icon: 'family-friendly' },
-  { id: 26, name: 'เหมาะสำหรับคู่รัก', icon: 'couple-friendly' },
-  { id: 27, name: 'เหมาะสำหรับธุรกิจ', icon: 'business-friendly' },
-  { id: 28, name: 'ราคาประหยัด', icon: 'budget-friendly' },
-  { id: 29, name: 'ดีไซน์โมเดิร์น', icon: 'modern-design' },
-  { id: 30, name: 'สถาปัตยกรรมไทย', icon: 'thai-architecture' },
-  { id: 31, name: 'บ้านลอยน้ำ', icon: 'floating-house' },
-  { id: 32, name: 'ลิฟต์ส่วนตัว', icon: 'private-elevator' },
-  { id: 33, name: 'ออฟฟิศในบ้าน', icon: 'home-office' }
+// ข้อมูลรีวิวจำลอง
+export const mockReviews = [
+  {
+    id: 1,
+    name: "สมชาย ใจดี",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+    rating: 5,
+    date: "2024-11-15",
+    comment: "ห้องพักสวยมาก สระว่ายน้ำใสสะอาด วิวสวยมาก เจ้าของใจดี แนะนำเลยครับ จะมาใหม่แน่นอน"
+  },
+  {
+    id: 2,
+    name: "วิภาวี สุขใส",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b647?w=100&h=100&fit=crop&crop=face",
+    rating: 5,
+    date: "2024-11-10",
+    comment: "ที่พักดีมากค่ะ สะอาด ครบครัน สระน้ำใสมาก เด็กๆ ชอบมาก เจ้าของดูแลดี ราคาคุ้มค่า"
+  },
+  {
+    id: 3,
+    name: "ธนากร เที่ยวไทย",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    rating: 4,
+    date: "2024-11-05",
+    comment: "โดยรวมดีครับ ห้องพักสะอาด สระว่ายน้ำใหญ่ มีบาร์บีคิว ติดตรงที่ไฟ WiFi อ่อนหน่อย แต่ก็พอใช้ได้"
+  },
+  {
+    id: 4,
+    name: "มณีรัตน์ ท่องโลก",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    rating: 5,
+    date: "2024-10-28",
+    comment: "ประทับใจมากค่ะ วิวสวยมาก โดยเฉพาะตอนพระอาทิตย์ตก สระน้ำสะอาด ครัวครบครัน ไปกับครอบครัวเหมาะมาก"
+  },
+  {
+    id: 5,
+    name: "อนุชา รักเที่ยว",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+    rating: 4,
+    date: "2024-10-20",
+    comment: "ที่พักดี บรรยากาศดี เหมาะสำหรับพักผ่อน สระว่ายน้ำสะอาด มีความเป็นส่วนตัว เจ้าของดูแลดี"
+  },
+  {
+    id: 6,
+    name: "ปริยา ชิลไลฟ์",
+    avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop&crop=face",
+    rating: 5,
+    date: "2024-10-15",
+    comment: "Perfect! ห้องพักสวยมาก ตกแต่งดี สระว่ายน้ำใส วิวดี เจ้าของใจดีมาก ให้คำแนะนำดี จะกลับมาอีกแน่นอนค่ะ"
+  }
 ];
 
-// ข้อมูลสำหรับตัวเลือกการเรียงลำดับ
-export const sortOptions = [
-  { value: 'featured', label: 'แนะนำ' },
-  { value: 'price-low', label: 'ราคา: ต่ำไปสูง' },
-  { value: 'price-high', label: 'ราคา: สูงไปต่ำ' },
-  { value: 'rating', label: 'คะแนนรีวิว' }
+// รูปภาพเพิ่มเติมจำลอง
+export const mockAdditionalImages = [
+  "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=400&fit=crop"
 ];
 
-// ข้อมูลสำหรับตัวเลือกจำนวนห้องนอน
-export const bedroomOptions = [
-  { value: '', label: 'ทั้งหมด' },
-  { value: '1', label: '1 ห้องนอน' },
-  { value: '2', label: '2 ห้องนอน' },
-  { value: '3', label: '3 ห้องนอน' },
-  { value: '4', label: '4+ ห้องนอน' }
+// ข้อมูลท่องเที่ยวใกล้เคียงจำลอง
+export const mockNearbyAttractions = [
+  {
+    id: 1,
+    name: "ตลาดน้ำอัมพวา",
+    distance: "5 กม.",
+    type: "ตลาด",
+    rating: 4.6,
+    image: "https://images.unsplash.com/photo-1555321712-3c36b02d1c3d?w=300&h=200&fit=crop"
+  },
+  {
+    id: 2,
+    name: "วัดบางกุ้ง",
+    distance: "3 กม.",
+    type: "วัด",
+    rating: 4.4,
+    image: "https://images.unsplash.com/photo-1544636331-6e4b999de2a8?w=300&h=200&fit=crop"
+  },
+  {
+    id: 3,
+    name: "สวนผึ้ง",
+    distance: "8 กม.",
+    type: "ธรรมชาติ",
+    rating: 4.5,
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=200&fit=crop"
+  },
+  {
+    id: 4,
+    name: "หาดชะอำ",
+    distance: "25 กม.",
+    type: "หาด",
+    rating: 4.3,
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop"
+  }
 ];
 
-// ข้อมูลสำหรับตัวเลือกจำนวนผู้เข้าพัก
-export const guestOptions = [
-  { value: '', label: 'ทั้งหมด' },
-  { value: '2', label: '2 คน' },
-  { value: '4', label: '4 คน' },
-  { value: '6', label: '6 คน' },
-  { value: '8', label: '8+ คน' }
+// ข้อมูลร้านอาหารใกล้เคียงจำลอง
+export const mockNearbyRestaurants = [
+  {
+    id: 1,
+    name: "ร้านอาหารลูกชิ้นปลาแม่กลอง",
+    cuisine: "อาหารไทย",
+    distance: "2 กม.",
+    rating: 4.5,
+    priceRange: "฿฿",
+    image: "https://images.unsplash.com/photo-1562777717-dc6984fdd78e?w=300&h=200&fit=crop"
+  },
+  {
+    id: 2,
+    name: "ครัวบ้านริมคลอง",
+    cuisine: "อาหารทะเล",
+    distance: "1.5 กม.",
+    rating: 4.7,
+    priceRange: "฿฿฿",
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300&h=200&fit=crop"
+  },
+  {
+    id: 3,
+    name: "กาแฟดอยคำ",
+    cuisine: "เครื่องดื่ม",
+    distance: "3 กม.",
+    rating: 4.2,
+    priceRange: "฿",
+    image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=300&h=200&fit=crop"
+  }
 ];
 
-// ข้อมูลสำหรับช่วงราคา (แนะนำ)
-export const priceRanges = [
-  { min: 0, max: 2000, label: 'ต่ำกว่า 2,000 บาท' },
-  { min: 2000, max: 4000, label: '2,000 - 4,000 บาท' },
-  { min: 4000, max: 6000, label: '4,000 - 6,000 บาท' },
-  { min: 6000, max: 10000, label: '6,000 - 10,000 บาท' },
-  { min: 10000, max: 999999, label: 'มากกว่า 10,000 บาท' }
+// ข้อมูลโปรโมชันจำลอง
+export const mockPromotions = [
+  {
+    id: 1,
+    title: "Early Bird Special",
+    description: "จองล่วงหน้า 30 วัน รับส่วนลด 20%",
+    discount: 20,
+    validUntil: "2024-12-31",
+    conditions: ["จองล่วงหน้าอย่างน้อย 30 วัน", "เข้าพักขั้นต่ำ 2 คืน"]
+  },
+  {
+    id: 2,
+    title: "Weekend Getaway",
+    description: "พักสุดสัปดาห์ 2 คืน 3 วัน ราคาพิเศษ",
+    discount: 15,
+    validUntil: "2024-11-30",
+    conditions: ["เข้าพักวันศุกร์-อาทิตย์", "จองขั้นต่ำ 2 คืน"]
+  },
+  {
+    id: 3,
+    title: "Long Stay Promotion",
+    description: "เข้าพัก 5 คืนขึ้นไป รับส่วนลด 25%",
+    discount: 25,
+    validUntil: "2024-12-15",
+    conditions: ["เข้าพักขั้นต่ำ 5 คืน", "ไม่รวมวันหยุดนักขัตฤกษ์"]
+  }
 ];
+
+// ข้อมูลสิ่งอำนวยความสะดวกทั้งหมด
+export const allAmenities = [
+  { name: "WiFi ฟรี", icon: "wifi", category: "technology" },
+  { name: "ที่จอดรถฟรี", icon: "parking", category: "transport" },
+  { name: "ครัวพร้อมอุปกรณ์", icon: "kitchen", category: "kitchen" },
+  { name: "สระว่ายน้ำส่วนตัว", icon: "pool", category: "recreation" },
+  { name: "เครื่องปรับอากาศ", icon: "air-conditioning", category: "comfort" },
+  { name: "วิวทะเล", icon: "ocean-view", category: "view" },
+  { name: "วิวภูเขา", icon: "mountain-view", category: "view" },
+  { name: "สวนส่วนตัว", icon: "garden", category: "outdoor" },
+  { name: "ระเบียงส่วนตัว", icon: "balcony", category: "outdoor" },
+  { name: "บาร์บีคิว", icon: "bbq", category: "outdoor" },
+  { name: "ทีวี Smart TV", icon: "tv", category: "entertainment" },
+  { name: "ห้องออกกำลังกาย", icon: "gym", category: "recreation" },
+  { name: "เกมส์คอนโซล", icon: "game", category: "entertainment" },
+  { name: "อุปกรณ์เด็ก", icon: "baby", category: "family" },
+  { name: "เครื่องซักผ้า", icon: "laundry", category: "utility" },
+  { name: "จาคูซซี่", icon: "pool", category: "luxury" },
+  { name: "โฮมเธียเตอร์", icon: "tv", category: "entertainment" }
+];
+
+// ฟังก์ชันช่วยเหลือ
+export const getRoomById = (id) => {
+  return mockRooms.find(room => room.id === parseInt(id));
+};
+
+export const getAvailableRooms = () => {
+  return mockRooms.filter(room => room.isAvailable);
+};
+
+export const getFeaturedRooms = () => {
+  return mockRooms.filter(room => room.isFeature);
+};
+
+export const getRoomsByPriceRange = (min, max) => {
+  return mockRooms.filter(room => room.price >= min && room.price <= max);
+};
+
+export const searchRooms = (query) => {
+  const searchTerm = query.toLowerCase();
+  return mockRooms.filter(room => 
+    room.name.toLowerCase().includes(searchTerm) ||
+    room.location.toLowerCase().includes(searchTerm) ||
+    room.amenities.some(amenity => amenity.name.toLowerCase().includes(searchTerm))
+  );
+};
