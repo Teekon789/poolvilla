@@ -1,14 +1,26 @@
-"use client"
+"use client";
 
-import { useState } from 'react';
-import { 
-  MapPin, Users, Bath, Bed, Wifi, Car, Utensils, Waves, 
-  Eye, MessageCircle, Heart, Share2, CheckCircle2
-} from 'lucide-react';
-import Card from './Card';
-import Button from './Button';
-import Badge from './Badge';
-import StarRating from './StarRating';
+import { useState } from "react";
+import {
+  MapPin,
+  Users,
+  Bath,
+  Bed,
+  Wifi,
+  Car,
+  Utensils,
+  Waves,
+  Eye,
+  MessageCircle,
+  Heart,
+  Share2,
+  CheckCircle2,
+} from "lucide-react";
+import Card from "./Card";
+import Button from "./Button";
+import Badge from "./Badge";
+import StarRating from "./StarRating";
+import Link from "next/link";
 
 /**
  * คอมโพเนนต์การ์ดห้องพัก - ออกแบบใหม่สวยงาม
@@ -25,15 +37,18 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
   const handleLineContact = () => {
     const message = encodeURIComponent(
       `🏨 สวัสดีครับ ผม/ดิฉันสนใจห้องพัก "${room.name}"\n\n` +
-      `💰 ราคา: ${room.price.toLocaleString()} บาท/คืน\n` +
-      `🛏️ ห้องนอน: ${room.bedrooms} ห้อง\n` +
-      `🚿 ห้องน้ำ: ${room.bathrooms} ห้อง\n` +
-      `👥 รองรับ: ${room.maxGuests} คน\n` +
-      `📍 สถานที่: ${room.location}\n\n` +
-      `กรุณาแจ้งรายละเอียดเพิ่มเติมและตรวจสอบว่างครับ 🙏`
+        `💰 ราคา: ${room.price.toLocaleString()} บาท/คืน\n` +
+        `🛏️ ห้องนอน: ${room.bedrooms} ห้อง\n` +
+        `🚿 ห้องน้ำ: ${room.bathrooms} ห้อง\n` +
+        `👥 รองรับ: ${room.maxGuests} คน\n` +
+        `📍 สถานที่: ${room.location}\n\n` +
+        `กรุณาแจ้งรายละเอียดเพิ่มเติมและตรวจสอบว่างครับ 🙏`
     );
-    
-    window.open(`https://line.me/R/oaMessage/@poolvillaresort/?${message}`, '_blank');
+
+    window.open(
+      `https://line.me/R/oaMessage/@poolvillaresort/?${message}`,
+      "_blank"
+    );
   };
 
   // ฟังก์ชันแชร์ห้องพัก
@@ -41,18 +56,20 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
     if (navigator.share) {
       navigator.share({
         title: room.name,
-        text: `ดูห้องพักสวยๆ นี้สิ - ${room.name} ราคาเพียง ${room.price.toLocaleString()} บาท/คืน`,
-        url: window.location.href
+        text: `ดูห้องพักสวยๆ นี้สิ - ${
+          room.name
+        } ราคาเพียง ${room.price.toLocaleString()} บาท/คืน`,
+        url: window.location.href,
       });
     } else {
       // Fallback สำหรับเบราว์เซอร์ที่ไม่รองรับ
       navigator.clipboard.writeText(window.location.href);
-      alert('คัดลอกลิงค์แล้ว!');
+      alert("คัดลอกลิงค์แล้ว!");
     }
   };
 
   return (
-    <Card 
+    <Card
       className="overflow-hidden group cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -64,19 +81,19 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
           </div>
         )}
-        
+
         <img
           src={room.mainImage}
           alt={room.name}
           onLoad={() => setImageLoaded(true)}
           className={`w-full h-full object-cover transition-all duration-700 ${
-            imageLoaded ? 'opacity-100' : 'opacity-0'
-          } ${isHovered ? 'scale-110' : 'scale-100'}`}
+            imageLoaded ? "opacity-100" : "opacity-0"
+          } ${isHovered ? "scale-110" : "scale-100"}`}
         />
-        
+
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-        
+
         {/* สถานะและแบดจ์ */}
         <div className="absolute top-4 left-4 flex flex-col gap-2">
           {room.isFeature && (
@@ -84,11 +101,11 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
               ⭐ แนะนำ
             </Badge>
           )}
-          <Badge variant={room.isAvailable ? 'available' : 'unavailable'}>
-            {room.isAvailable ? '✓ ว่าง' : '✗ ไม่ว่าง'}
+          <Badge variant={room.isAvailable ? "available" : "unavailable"}>
+            {room.isAvailable ? "✓ ว่าง" : "✗ ไม่ว่าง"}
           </Badge>
         </div>
-        
+
         {/* ปุ่มต่างๆ */}
         <div className="absolute top-4 right-4 flex flex-col gap-2">
           <button
@@ -98,13 +115,13 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
             }}
             className="p-2 bg-white/90 hover:bg-white rounded-full transition-all duration-200 transform hover:scale-110 shadow-lg"
           >
-            <Heart 
+            <Heart
               className={`w-5 h-5 transition-colors ${
-                isFavorite ? 'text-red-500 fill-current' : 'text-gray-600'
-              }`} 
+                isFavorite ? "text-red-500 fill-current" : "text-gray-600"
+              }`}
             />
           </button>
-          
+
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -126,7 +143,7 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
           </div>
         </div>
       </div>
-      
+
       {/* ข้อมูลห้องพัก */}
       <div className="p-6">
         {/* ชื่อห้องและที่ตั้ง */}
@@ -139,7 +156,7 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
             <span className="text-sm">{room.location}</span>
           </div>
         </div>
-        
+
         {/* รายละเอียดห้องพัก */}
         <div className="grid grid-cols-3 gap-4 mb-4">
           <div className="flex items-center text-gray-600">
@@ -148,27 +165,33 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
           </div>
           <div className="flex items-center text-gray-600">
             <Bath className="w-4 h-4 mr-2 text-blue-500" />
-            <span className="text-sm font-medium">{room.bathrooms} ห้องน้ำ</span>
+            <span className="text-sm font-medium">
+              {room.bathrooms} ห้องน้ำ
+            </span>
           </div>
           <div className="flex items-center text-gray-600">
             <Users className="w-4 h-4 mr-2 text-blue-500" />
             <span className="text-sm font-medium">{room.maxGuests} คน</span>
           </div>
         </div>
-        
+
         {/* สิ่งอำนวยความสะดวก */}
         <div className="mb-4">
           <div className="flex flex-wrap gap-2">
             {room.amenities.slice(0, 3).map((amenity, index) => {
-              const IconComponent = {
-                wifi: Wifi,
-                parking: Car,
-                kitchen: Utensils,
-                pool: Waves,
-              }[amenity.icon] || CheckCircle2;
-              
+              const IconComponent =
+                {
+                  wifi: Wifi,
+                  parking: Car,
+                  kitchen: Utensils,
+                  pool: Waves,
+                }[amenity.icon] || CheckCircle2;
+
               return (
-                <div key={index} className="flex items-center bg-blue-50 text-blue-700 rounded-lg px-3 py-1 text-xs font-medium">
+                <div
+                  key={index}
+                  className="flex items-center bg-blue-50 text-blue-700 rounded-lg px-3 py-1 text-xs font-medium"
+                >
                   <IconComponent className="w-3 h-3 mr-1" />
                   <span>{amenity.name}</span>
                 </div>
@@ -181,23 +204,28 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
             )}
           </div>
         </div>
-        
+
         {/* คะแนนรีวิว */}
         <div className="mb-6">
-          <StarRating rating={room.averageRating} totalReviews={room.totalReviews} />
+          <StarRating
+            rating={room.averageRating}
+            totalReviews={room.totalReviews}
+          />
         </div>
-        
+
         {/* ปุ่มดำเนินการ */}
         <div className="flex gap-3">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => onViewDetails(room.id)}
-            className="flex-1"
-          >
-            <Eye className="w-4 h-4 mr-2" />
-            ดูรายละเอียด
-          </Button>
+          <Link href={`/room/${room.id}`}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => onViewDetails(room.id)}
+              className="flex-1"
+            >
+              <Eye className="w-4 h-4 mr-2" />
+              ดูรายละเอียด
+            </Button>
+          </Link>
           <Button
             variant="success"
             size="sm"
