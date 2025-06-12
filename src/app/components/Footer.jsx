@@ -33,8 +33,7 @@ const Footer = () => {
               </h3>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
-              แพลตฟอร์มจองวิลล่าออนไลน์ที่ดีที่สุดในไทย 
-              พร้อมให้คุณค้นพบที่พักสุดพิเศษสำหรับทุกการเดินทาง
+              แพลตฟอร์มจองวิลล่าออนไลน์
             </p>
             
             {/* Social Media */}
@@ -111,14 +110,10 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  บริการรถรับส่ง
-                </a>
+               
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  ประกันการเดินทาง
-                </a>
+                
               </li>
             </ul>
           </div>
@@ -158,40 +153,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Features Section */}
-        <div className="mt-16 pt-8 border-t border-gray-700">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-center space-x-4">
-              <div className="p-3 bg-blue-600 rounded-full">
-                <Shield className="w-6 h-6" />
-              </div>
-              <div>
-                <h5 className="font-semibold text-blue-400">ความปลอดภัย</h5>
-                <p className="text-gray-300 text-sm">การจองที่ปลอดภัยและเชื่อถือได้</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <div className="p-3 bg-green-600 rounded-full">
-                <CreditCard className="w-6 h-6" />
-              </div>
-              <div>
-                <h5 className="font-semibold text-green-400">ชำระเงินง่าย</h5>
-                <p className="text-gray-300 text-sm">รองรับการชำระหลายช่องทาง</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <div className="p-3 bg-purple-600 rounded-full">
-                <Headphones className="w-6 h-6" />
-              </div>
-              <div>
-                <h5 className="font-semibold text-purple-400">ซัพพอร์ต 24/7</h5>
-                <p className="text-gray-300 text-sm">ทีมงานพร้อมช่วยเหลือตลอด 24 ชั่วโมง</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Bottom Bar */}
@@ -204,20 +165,7 @@ const Footer = () => {
               </p>
             </div>
             
-            <div className="flex flex-wrap items-center space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                เงื่อนไขการใช้งาน
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                นโยบายความเป็นส่วนตัว
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                คำถามที่พบบ่อย
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                สำหรับเจ้าของที่พัก
-              </a>
-            </div>
+           
           </div>
         </div>
       </div>

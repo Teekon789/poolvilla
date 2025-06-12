@@ -22,10 +22,6 @@ const HeroSection = () => {
             ประสบการณ์การพักผ่อนระดับพรีเมียมในวิลล่าที่ออกแบบมาอย่างดี พร้อมสิ่งอำนวยความสะดวกครบครันและความเป็นส่วนตัวสูงสุด
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button variant="secondary" size="lg" className="flex items-center">
-              <Calendar className="w-5 h-5 mr-2" />
-              จองตอนนี้
-            </Button>
             <Button variant="outline" size="lg" className="flex items-center">
               <Phone className="w-5 h-5 mr-2" />
               โทรสอบถาม
