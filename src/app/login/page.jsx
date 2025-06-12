@@ -5,6 +5,7 @@ import { signIn, getSession } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Eye, EyeOff, Mail, Lock, Waves, CheckCircle, AlertCircle } from 'lucide-react'
+import Header from '@/components/Header'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -92,6 +93,8 @@ export default function LoginPage() {
   }
 
   return (
+    <div >
+      <Header />
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Header */}
@@ -238,6 +241,7 @@ export default function LoginPage() {
 
      
       </div>
+    </div>
     </div>
   )
 }

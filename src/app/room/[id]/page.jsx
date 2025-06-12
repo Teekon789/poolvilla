@@ -10,9 +10,9 @@ import {
   Dumbbell, Baby, ParkingCircle, WashingMachine,
   ChevronDown, ChevronUp
 } from 'lucide-react';
-import Button from '@/app/components/Button';
-import StarRating from '@/app/components/StarRating';
-import { mockRooms, mockReviews, mockAdditionalImages } from '@/app/data/mockData';
+import Button from '@/components/Button';
+import StarRating from '@/components/StarRating';
+import { mockRooms, mockReviews, mockAdditionalImages } from '@/data/mockData';
 
 export default function RoomDetailPage({ params }) {
   const router = useRouter();
