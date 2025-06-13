@@ -2,36 +2,23 @@
 
 import { useState } from "react";
 import {
-  MapPin,
-  Users,
-  Bath,
-  Bed,
-  Wifi,
-  Car,
-  Utensils,
-  Waves,
-  Eye,
-  MessageCircle,
-  Heart,
-  Share2,
-  CheckCircle2,
+  MapPin, Users, Bath, Bed, Wifi, Car, Utensils, Waves,
+  Eye, MessageCircle, Heart, Share2, CheckCircle2,
 } from "lucide-react";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import StarRating from "./StarRating";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 /**
- * คอมโพเนนต์การ์ดห้องพัก - ออกแบบใหม่สวยงาม
- * @param {object} room - ข้อมูลห้องพัก
- * @param {function} onViewDetails - ฟังก์ชันเมื่อคลิกดูรายละเอียด
- * @param {function} onToggleFavorite - ฟังก์ชันเมื่อคลิกเพิ่ม/ลบรายการโปรด
- * @param {boolean} isFavorite - สถานะรายการโปรด
+ * คอมโพเนนต์การ์ดห้องพัก - ดึงข้อมูลจาก API จริง
  */
 const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
 
   // ฟังก์ชันติดต่อผ่าน LINE
   const handleLineContact = () => {
@@ -59,11 +46,10 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
         text: `ดูห้องพักสวยๆ นี้สิ - ${
           room.name
         } ราคาเพียง ${room.price.toLocaleString()} บาท/คืน`,
-        url: window.location.href,
+        url: `${window.location.origin}/room/${room._id}`,
       });
     } else {
-      // Fallback สำหรับเบราว์เซอร์ที่ไม่รองรับ
-      navigator.clipboard.writeText(window.location.href);
+      navigator.clipboard.writeText(`${window.location.origin}/room/${room._id}`);
       alert("คัดลอกลิงค์แล้ว!");
     }
   };
@@ -96,7 +82,7 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
 
         {/* สถานะและแบดจ์ */}
         <div className="absolute top-4 left-4 flex flex-col gap-2">
-          {room.isFeature && (
+          {room.isFeatured && (
             <Badge variant="featured" className="animate-pulse">
               ⭐ แนะนำ
             </Badge>
@@ -111,7 +97,7 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              onToggleFavorite(room.id);
+              onToggleFavorite(room._id);
             }}
             className="p-2 bg-white/90 hover:bg-white rounded-full transition-all duration-200 transform hover:scale-110 shadow-lg"
           >
@@ -215,11 +201,11 @@ const RoomCard = ({ room, onViewDetails, onToggleFavorite, isFavorite }) => {
 
         {/* ปุ่มดำเนินการ */}
         <div className="flex gap-3">
-          <Link href={`/room/${room.id}`}>
+          <Link href={`/room/${room._id}`}>
             <Button
               variant="outline"
               size="sm"
-              onClick={() => onViewDetails(room.id)}
+              onClick={() => onViewDetails(room._id)}
               className="flex-1"
             >
               <Eye className="w-4 h-4 mr-2" />
