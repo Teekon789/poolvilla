@@ -16,9 +16,9 @@ import {
   Share2,
   CheckCircle2,
 } from "lucide-react";
-import Card from "./Card";
-import Button from "./Button";
-import Badge from "./Badge";
+import Card from "@/components/ui/Card";
+import Button from "@/components/ui/Button";
+import Badge from "@/components/ui/Badge";
 import StarRating from "./StarRating";
 import Link from "next/link";
 

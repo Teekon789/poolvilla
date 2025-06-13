@@ -1,7 +1,7 @@
 "use client"
 
 import { Calendar, Phone } from 'lucide-react';
-import Button from './Button';
+import Button from '@/components/ui/Button';
 
 /**
  * คอมโพเนนต์ Hero Section สำหรับหน้าแรก

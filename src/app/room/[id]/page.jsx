@@ -10,7 +10,7 @@ import {
   Dumbbell, Baby, ParkingCircle, WashingMachine,
   ChevronDown, ChevronUp
 } from 'lucide-react';
-import Button from '@/components/Button';
+import Button from '@/components/ui/Button';
 import StarRating from '@/components/StarRating';
 import { mockRooms, mockReviews, mockAdditionalImages } from '@/data/mockData';
 

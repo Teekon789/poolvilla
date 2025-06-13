@@ -1,8 +1,8 @@
 "use client"
 
 import { Search, ChevronDown, Filter } from 'lucide-react';
-import Button from './Button';
-import Card from './Card';
+import Button from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
 
 /**
  * คอมโพเนนต์แผงตัวกรองห้องพัก

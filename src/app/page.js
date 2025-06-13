@@ -6,8 +6,8 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import FilterPanel from './components/FilterPanel';
 import RoomCard from './components/RoomCard';
-import Card from './components/Card';
-import Button from './components/Button';
+import Card from './components/ui/Card';
+import Button from './components/ui/Button';
 import { Waves } from 'lucide-react';
 import Footer from './components/Footer';
 // นำเข้าข้อมูล mock
